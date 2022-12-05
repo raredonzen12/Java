@@ -1,15 +1,21 @@
 import java.util.Scanner;
 
 class LCM {
-    static int findLcm(int a, int b){
-        int res = Math.max(a, b);
-        while(true){
-            if(res%a==0 && res%b==0){
-                break;
+    static int euclidGcd(int a, int b){
+        while(a != 0 && b != 0 ){
+            if(a>b){
+                a = a%b;
+            }else{
+                b = b%a;
             }
-            res++;
         }
-        return res;
+        if(a != 0)
+        return a;
+        else
+        return b;
+    }
+    static int findLcm(int a, int b){
+        return (a*b)/euclidGcd(a, b);
     }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
